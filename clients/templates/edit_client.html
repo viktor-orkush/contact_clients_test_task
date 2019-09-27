@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block metadescription %}
+    Create clients
+{% endblock %}
+{% block title %}
+    Create clients
+{% endblock %}
+{% block content %}
+    <div class="bg-light">
+        <div>
+            <br>
+            <h2 class="my_title">Update information about Client</h2>
+            <p>{{ error }}</p>
+            <form method="post">
+                {% csrf_token %}
+                <p>{{ form | crispy }} </p>
+                <button type="submit" class="btn btn-secondary">Update</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+    All clients
+{% endblock %}
+{% block title %}
+    All clients
+{% endblock %}
+{% block content %}
+    <div class="bg-light">
+        {% if clients %}
+            <div class="text-center">
+            <br>
+            <h3 class="my_title">List of all Clients</h3>
+            <br>
+            {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li class="{{ message.tags }}">{{ message}}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Client name</th>
+                    <th>Client name</th>
+                    <th>Suburb</th>
+                    <th>Postcode</th>
+                    <th>State</th>
+                    <th>Contact name</th>
+                    <th>Email Address</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.client_name }}</td>
+                        <td>{{ client.street_name }}</td>
+                        <td>{{ client.suburb }}</td>
+                        <td>{{ client.postcode }}</td>
+                        <td>{{ client.state }}</td>
+                        <td>{{ client.contact_name }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>{{ client.phone }}</td>
+                        <td><a href="{% url 'clients:edit_client' client.id %}">EDIT</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>There are no one clients.</p>
+        {% endif %}
+        </div>
+{% endblock %}
