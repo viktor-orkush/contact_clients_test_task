@@ -34,7 +34,6 @@ def edit_client(request, id_client):
         if form.is_valid():
             obj_client = form.save(commit=False)
             obj_client.save()
-            # TODO dont show successfully message
             messages.success(request, "You successfully updated {} contact information ".format(client.client_name))
             return redirect('all_clients')
         else:
