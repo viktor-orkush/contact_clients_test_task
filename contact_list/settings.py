@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clients',
     'crispy_forms',
+    'webstack_django_sorting',
 ]
 
 MIDDLEWARE = [

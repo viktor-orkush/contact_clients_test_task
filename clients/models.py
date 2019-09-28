@@ -10,6 +10,7 @@ class Client(models.Model):
     contact_name = models.CharField(max_length=250, blank=True)
     email = models.EmailField(max_length=250, unique=True, blank=False, verbose_name='Email Address')
     phone = models.CharField(max_length=250, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'Client'
