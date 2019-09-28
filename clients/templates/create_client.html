@@ -17,8 +17,10 @@
                 <form method="post">
                     {% csrf_token %}
                     <p>{{ form | crispy }}</p>
-                    <button type="submit" class="btn btn-secondary">Create</button>
+                    <a class="" href="{% url 'all_clients' %}"><button type="button" class="btn btn-secondary">Cancel</button></a>
+                    <button type="submit" class="btn btn-info float-right">Create</button>
                 </form>
             </div>
         </div>
+    </div>
 {% endblock %}

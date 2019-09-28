@@ -8,17 +8,14 @@
 {% endblock %}
 {% block content %}
     <div class="bg-light">
-        {% if clients %}
-            <div class="text-center">
+        <div class="text-center">
             <br>
             <h3 class="my_title">List of all Clients</h3>
             <br>
             {% if messages %}
-              <ul class="messages">
                 {% for message in messages %}
-                  <li class="{{ message.tags }}">{{ message}}</li>
+                    <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
                 {% endfor %}
-              </ul>
             {% endif %}
             <table class="table table-bordered">
                 <thead>
@@ -34,24 +31,27 @@
                     <th>Action</th>
                 </tr>
                 </thead>
-                <tbody>
-                {% for client in clients %}
-                    <tr>
-                        <td>{{ client.client_name }}</td>
-                        <td>{{ client.street_name }}</td>
-                        <td>{{ client.suburb }}</td>
-                        <td>{{ client.postcode }}</td>
-                        <td>{{ client.state }}</td>
-                        <td>{{ client.contact_name }}</td>
-                        <td>{{ client.email }}</td>
-                        <td>{{ client.phone }}</td>
-                        <td><a href="{% url 'clients:edit_client' client.id %}">EDIT</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
+                {% if clients %}
+                    <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.client_name }}</td>
+                            <td>{{ client.street_name }}</td>
+                            <td>{{ client.suburb }}</td>
+                            <td>{{ client.postcode }}</td>
+                            <td>{{ client.state }}</td>
+                            <td>{{ client.contact_name }}</td>
+                            <td>{{ client.email }}</td>
+                            <td>{{ client.phone }}</td>
+                            <td><a href="{% url 'clients:edit_client' client.id %}"><button class="btn btn-info">EDIT </button></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                {% elif request.GET.search %}
+                    <div class="alert alert-info" role="alert">
+                        There are no matches found of search term.
+                    </div>
+                {% endif %}
             </table>
-        {% else %}
-            <p>There are no one clients.</p>
-        {% endif %}
         </div>
 {% endblock %}
