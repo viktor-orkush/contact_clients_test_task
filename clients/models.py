@@ -16,4 +16,9 @@ class Client(models.Model):
         db_table = 'Client'
 
     def __str__(self):
-        return str(self.name)
+        return str(self.client_name)
+
+    @property
+    def get_address(self):
+        return '{} {} {}'.format(self.street_name, self.state, self.postcode)
+
