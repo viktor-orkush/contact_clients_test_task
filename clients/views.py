@@ -21,6 +21,7 @@ def create_client(request):
         form = ClientForm(data=request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "You successfully add {} contact ".format(form['client_name'].value()))
             return redirect('all_clients')
     else:
         form = ClientForm()
