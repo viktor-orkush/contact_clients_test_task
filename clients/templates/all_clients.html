@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load sorting_tags %}
 {% block metadescription %}
     All clients
 {% endblock %}
@@ -20,19 +21,20 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>Client name</th>
-                    <th>Client name</th>
-                    <th>Suburb</th>
+                    <th>{% anchor client_name _("Client name") %}</th>
+                    <th>Street name</th>
+                    <th>{% anchor suburb _("Suburb") %}</th>
                     <th>Postcode</th>
                     <th>State</th>
                     <th>Contact name</th>
-                    <th>Email Address</th>
-                    <th>Phone</th>
+                    <th>{% anchor email _("Email") %}</th>
+                    <th>{% anchor phone _("Phone") %}</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 {% if clients %}
                     <tbody>
+                    {% autosort clients %}
                     {% for client in clients %}
                         <tr>
                             <td>{{ client.client_name }}</td>
