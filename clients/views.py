@@ -6,7 +6,7 @@ from clients.models import Client
 
 
 def all_clients(request):
-    clients = Client.objects.all()
+    clients = Client.objects.all().order_by('-created')
     search = request.GET.get('search')
     if search:
         clients = clients.filter(Q(client_name__icontains=search) |
