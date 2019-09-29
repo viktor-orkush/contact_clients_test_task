@@ -20,5 +20,5 @@ class Client(models.Model):
 
     @property
     def get_address(self):
-        return '{} {} {}'.format(self.street_name, self.state, self.postcode)
+        return '{}, {}, {}'.format(self.street_name, self.state, self.postcode)
 
